@@ -1,4 +1,30 @@
-let currentIndex = 0;
+const fetchData = async () => {
+    const todos = document.getElementById("list");
+    console.log(todos);
+
+    const response = await fetch(
+        "https://jsonplaceholder.typicode.com/todos/1"
+      ).then((response) => response.json());
+
+      console.log("response: ", response);
+
+      if (response) {
+        console.log("hello");
+        const li = document.createElement("li");
+
+        li.innerHTML = `
+          <span>${response.title}</span>
+        `;
+        todos.appendChild(li); // no need to await appendChild, it's not a promise
+      }
+    };
+
+
+
+
+
+
+/*let currentIndex = 0;
 const todos = ['Hello', 'Have a nice day!', 'ByeBye','Take care.'];
 document.getElementById('btn-generate').addEventListener('click', generateTodos);
 
@@ -28,4 +54,4 @@ async function generateTodos() {
         todoList.innerHTML = '';
         currentIndex = 0;
     }
-}
+}*/
